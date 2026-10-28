@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Folder
+import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -64,20 +66,25 @@ private fun HistoryCardItem(item: BatchHistoryEntity, onSelect: () -> Unit, onDe
     val fmt = SimpleDateFormat("yyyy/MM/dd - HH:mm", Locale.US)
     Card(
         modifier = Modifier.fillMaxWidth().clickable(onClick = onSelect),
-        shape = RoundedCornerShape(20.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
     ) {
-        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Surface(modifier = Modifier.size(44.dp), shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.primaryContainer) {
+                Box(contentAlignment = Alignment.Center) { Icon(Icons.Filled.Folder, null, tint = MaterialTheme.colorScheme.onPrimaryContainer) }
+            }
+            Spacer(Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
-                Text(item.folderName, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyLarge)
+                Text(item.folderName, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 Text(
                     stringResource(R.string.history_item_samples_cell, fmt.format(Date(item.processedTimestamp)), item.sampleCount, item.targetCell),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp,
                 )
             }
+            IconButton(onClick = onSelect) { Icon(Icons.Filled.History, null, tint = MaterialTheme.colorScheme.primary) }
             IconButton(onClick = onDelete) {
-                Icon(Icons.Filled.Delete, stringResource(R.string.btn_delete), tint = MaterialTheme.colorScheme.error)
+                Icon(Icons.Filled.Delete, stringResource(R.string.btn_delete), tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f))
             }
         }
     }

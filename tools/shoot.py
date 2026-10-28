@@ -60,7 +60,7 @@ sw(600,2000); sw(600,2000); time.sleep(1)
 tapxy(797,477); shot('21-history-filled'); back()
 tapxy(540,718); shot('22-sync')
 tap_text('Select TEST Folder','23-tree-picker',wait=3)
-for t in ['Show roots','Downloads','TEST']:
+for t in ['Show roots','Download','TEST']:
     tap_text(t,'24-tree-'+t.replace(' ',''),wait=2)
 tap_text('Use this folder','25-use',wait=2)
 tap_text('Allow','26-allow',wait=3)
