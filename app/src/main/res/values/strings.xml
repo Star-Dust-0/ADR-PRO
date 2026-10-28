@@ -39,6 +39,7 @@
     <string name="inspector_dialog_title">Inspect Cell %1$s</string>
     <string name="samples_count">%1$d samples</string>
     <string name="samples_total_count">%1$d Samples</string>
+    <string name="selected_folder_label">Selected Folder: %1$s</string>
     <string name="settings_button_tooltip">Cell Settings</string>
     <string name="sync_empty_subfolders">No subfolders or CSV files found inside the TEST folder</string>
     <string name="sync_merge_folder">Merge This Folder</string>
@@ -47,6 +48,12 @@
     <string name="sync_root_path_label">Configured Path: %1$s</string>
     <string name="sync_sheet_desc">Select a date subfolder from the machine TEST directory to merge immediately</string>
     <string name="sync_sheet_title">Machine TEST Folder Sync</string>
+    <string name="table_empty_state">No CSV files selected or extracted yet</string>
+    <string name="table_header_extracted_value">Extracted Value</string>
+    <string name="table_header_filename">File Name</string>
+    <string name="table_header_index">#</string>
+    <string name="table_preview_title">Extracted Values Table</string>
+    <string name="table_view_details">Inspect CSV File Content</string>
     <string name="target_cell_label">Target Cell: %1$s</string>
     <string name="toast_aggregate_success">Successfully aggregated %1$d files!</string>
     <string name="toast_copy_success">Content copied to clipboard</string>

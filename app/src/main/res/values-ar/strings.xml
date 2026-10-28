@@ -38,6 +38,7 @@
     <string name="inspector_dialog_title">معاينة الخلية %1$s</string>
     <string name="samples_count">%1$d عينات</string>
     <string name="samples_total_count">%1$d عينة</string>
+    <string name="selected_folder_label">المجلد المحدد: %1$s</string>
     <string name="settings_button_tooltip">إعداد الخلية</string>
     <string name="sync_empty_subfolders">لم يتم العثور على مجلدات تواريخ أو ملفات CSV داخل مجلد TEST</string>
     <string name="sync_merge_folder">دمج هذا المجلد</string>
@@ -46,6 +47,12 @@
     <string name="sync_root_path_label">المسار المحفوظ: %1$s</string>
     <string name="sync_sheet_desc">اختر مجلد التاريخ المطلوب من داخل مجلد TEST بالماكينة لبدأ الدمج فوراً</string>
     <string name="sync_sheet_title">مزامنة مجلد TEST بالماكينة</string>
+    <string name="table_empty_state">لم يتم اختيار أو استخراج أي ملفات CSV بعد</string>
+    <string name="table_header_extracted_value">القيمة المستخرجة</string>
+    <string name="table_header_filename">اسم الملف</string>
+    <string name="table_header_index">#</string>
+    <string name="table_preview_title">جدول القيم المستخرجة</string>
+    <string name="table_view_details">معاينة محتوى ملف CSV بالكامل</string>
     <string name="target_cell_label">الخلية: %1$s</string>
     <string name="toast_aggregate_success">تم تجميع %1$d ملف بنجاح!</string>
     <string name="toast_copy_success">تم نسخ المحتوى إلى الحافظة</string>
