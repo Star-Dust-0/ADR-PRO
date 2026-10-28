@@ -31,10 +31,10 @@ fun CsvCellInspectorDialog(item: CsvSampleItem, onDismiss: () -> Unit) {
                 Icon(Icons.Filled.GridOn, null, tint = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.width(10.dp))
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(stringResource(R.string.inspector_dialog_title, item.targetCell), fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                    Text(item.fileName, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.Normal, maxLines = 1)
+                    Text(stringResource(R.string.inspector_dialog_title, item.targetCell), fontWeight = FontWeight.Bold, fontSize = 18.sp, lineHeight = 22.sp)
+                    Text(item.fileName, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 14.sp, fontWeight = FontWeight.Normal, maxLines = 1)
                 }
-                IconButton(onClick = onDismiss) { Icon(Icons.Filled.Close, stringResource(R.string.btn_close)) }
+                IconButton(onClick = onDismiss, modifier = Modifier.size(40.dp)) { Icon(Icons.Filled.Close, stringResource(R.string.btn_close)) }
             }
         },
         text = {
@@ -59,7 +59,7 @@ fun CsvCellInspectorDialog(item: CsvSampleItem, onDismiss: () -> Unit) {
                 Text(stringResource(R.string.inspector_dialog_grid_label, item.targetCell), fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
                 Spacer(Modifier.height(8.dp))
                 Column(
-                    modifier = Modifier.fillMaxWidth().heightIn(max = 300.dp)
+                    modifier = Modifier.fillMaxWidth().heightIn(max = 262.dp)
                         .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(12.dp))
                         .verticalScroll(rememberScrollState())
                         .horizontalScroll(rememberScrollState())
@@ -69,13 +69,13 @@ fun CsvCellInspectorDialog(item: CsvSampleItem, onDismiss: () -> Unit) {
                     item.rawPreviewGrid.forEachIndexed { r, row ->
                         Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                             Box(
-                                modifier = Modifier.width(36.dp).height(32.dp).background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(6.dp)),
+                                modifier = Modifier.width(36.dp).height(29.dp).background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(6.dp)),
                                 contentAlignment = Alignment.Center,
                             ) { Text("${r + 1}", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant) }
                             row.forEachIndexed { c, cell ->
                                 val hit = (r + 1) == item.rowNumber && colLetter(c) == item.columnLetter
                                 Box(
-                                    modifier = Modifier.widthIn(min = 100.dp).height(32.dp)
+                                    modifier = Modifier.widthIn(min = 100.dp).height(29.dp)
                                         .background(if (hit) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f), RoundedCornerShape(6.dp))
                                         .border(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.6f), RoundedCornerShape(6.dp))
                                         .padding(horizontal = 8.dp),

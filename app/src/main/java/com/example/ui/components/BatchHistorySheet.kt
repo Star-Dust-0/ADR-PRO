@@ -67,10 +67,10 @@ private fun HistoryCardItem(item: BatchHistoryEntity, onSelect: () -> Unit, onDe
     Card(
         modifier = Modifier.fillMaxWidth().clickable(onClick = onSelect),
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)),
     ) {
-        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(modifier = Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
             Surface(modifier = Modifier.size(44.dp), shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.primaryContainer) {
                 Box(contentAlignment = Alignment.Center) { Icon(Icons.Filled.Folder, null, tint = MaterialTheme.colorScheme.onPrimaryContainer) }
             }
@@ -79,11 +79,11 @@ private fun HistoryCardItem(item: BatchHistoryEntity, onSelect: () -> Unit, onDe
                 Text(item.folderName, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 Text(
                     stringResource(R.string.history_item_samples_cell, fmt.format(Date(item.processedTimestamp)), item.sampleCount, item.targetCell),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp, lineHeight = 14.sp,
                 )
             }
-            IconButton(onClick = onSelect) { Icon(Icons.Filled.History, null, tint = MaterialTheme.colorScheme.primary) }
-            IconButton(onClick = onDelete) {
+            IconButton(onClick = onSelect, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.History, null, tint = MaterialTheme.colorScheme.primary) }
+            IconButton(onClick = onDelete, modifier = Modifier.size(36.dp)) {
                 Icon(Icons.Filled.Delete, stringResource(R.string.btn_delete), tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f))
             }
         }

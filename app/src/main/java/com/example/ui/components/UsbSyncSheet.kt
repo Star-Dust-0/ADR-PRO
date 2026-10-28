@@ -39,7 +39,7 @@ fun UsbSyncSheet(
         if (uri != null) onSelectRootUri(uri)
     }
     ModalBottomSheet(onDismissRequest = onDismiss, modifier = modifier, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
-        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.85f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.75f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
             Spacer(Modifier.height(28.dp))
             Row(modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                 Surface(modifier = Modifier.size(48.dp), shape = RoundedCornerShape(24.dp), color = MaterialTheme.colorScheme.primaryContainer) {
@@ -74,16 +74,25 @@ fun UsbSyncSheet(
                     }
                 }
             } else {
-                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Filled.FolderSpecial, null, tint = MaterialTheme.colorScheme.primary)
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        stringResource(R.string.sync_root_path_label, Uri.decode(rootUriString).substringAfterLast(":").ifEmpty { "TEST" }),
-                        modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodySmall, maxLines = 1,
-                    )
-                    IconButton(onClick = onRescan) { Icon(Icons.Filled.Refresh, "Refresh", tint = MaterialTheme.colorScheme.primary) }
+                Surface(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f)) {
+                    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Icon(Icons.Filled.FolderSpecial, null, tint = MaterialTheme.colorScheme.primary)
+                        Text("..", modifier = Modifier.weight(1f), fontSize = 12.sp, maxLines = 1)
+                        IconButton(onClick = onRescan, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.Refresh, "Refresh", tint = MaterialTheme.colorScheme.primary) }
+                        OutlinedButton(onClick = { launcher.launch(null) }, shape = RoundedCornerShape(10.dp), contentPadding = PaddingValues(horizontal = 12.dp), modifier = Modifier.height(36.dp)) {
+                            Text(stringResource(R.string.btn_change_test_root), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                        Button(
+                            onClick = onUnmountStorage, shape = RoundedCornerShape(10.dp), contentPadding = PaddingValues(horizontal = 12.dp), modifier = Modifier.height(36.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = androidx.compose.ui.graphics.Color(0xFFDC2626), contentColor = androidx.compose.ui.graphics.Color.White),
+                        ) {
+                            Icon(Icons.Filled.Eject, null, modifier = Modifier.size(14.dp))
+                            Spacer(Modifier.width(4.dp))
+                            Text(stringResource(R.string.btn_unmount), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
                 }
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(14.dp))
                 if (isSyncing) {
                     LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
                 } else if (subFolders.isEmpty()) {
@@ -96,30 +105,30 @@ fun UsbSyncSheet(
                 } else {
                     LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.heightIn(max = 420.dp)) {
                         items(subFolders, key = { it.uriString }) { f ->
-                            Card(
+                            Surface(
                                 modifier = Modifier.fillMaxWidth(),
-                                shape = RoundedCornerShape(20.dp),
-                                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
-                                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                                shape = RoundedCornerShape(16.dp),
+                                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f),
+                                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
                             ) {
-                                Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(Icons.Filled.Folder, null, tint = MaterialTheme.colorScheme.primary)
+                                Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                                    Surface(modifier = Modifier.size(44.dp), shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.primaryContainer) {
+                                        Box(contentAlignment = Alignment.Center) { Icon(Icons.Filled.Folder, null, tint = MaterialTheme.colorScheme.primary) }
+                                    }
                                     Spacer(Modifier.width(12.dp))
                                     Column(modifier = Modifier.weight(1f)) {
-                                        Text(f.folderName, fontWeight = FontWeight.Bold)
-                                        Text(stringResource(R.string.samples_count, f.csvCount), color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall)
+                                        Text(f.folderName, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                                        Text(stringResource(R.string.samples_count, f.csvCount), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
                                     }
-                                    Button(onClick = { onMergeSubFolder(f) }, shape = RoundedCornerShape(14.dp)) {
-                                        Text(stringResource(R.string.sync_merge_folder))
+                                    Button(onClick = { onMergeSubFolder(f) }, shape = RoundedCornerShape(12.dp), contentPadding = PaddingValues(horizontal = 14.dp), modifier = Modifier.height(44.dp)) {
+                                        Icon(Icons.Filled.PlayArrow, null, modifier = Modifier.size(16.dp))
+                                        Spacer(Modifier.width(4.dp))
+                                        Text(stringResource(R.string.sync_merge_folder), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                     }
                                 }
                             }
                         }
                     }
-                }
-                Spacer(Modifier.height(12.dp))
-                OutlinedButton(onClick = { launcher.launch(null) }, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp)) {
-                    Text(stringResource(R.string.btn_change_test_root))
                 }
             }
         }
