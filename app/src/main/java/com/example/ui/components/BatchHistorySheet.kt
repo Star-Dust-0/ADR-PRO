@@ -33,7 +33,7 @@ fun BatchHistorySheet(
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 24.dp)) {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 24.dp, bottom = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -45,7 +45,7 @@ fun BatchHistorySheet(
                 TextButton(onClick = onDismiss) { Text(stringResource(R.string.btn_close), fontWeight = FontWeight.Medium) }
             }
             if (historyList.isEmpty()) {
-                Box(modifier = Modifier.fillMaxWidth().height(280.dp), contentAlignment = Alignment.Center) {
+                Box(modifier = Modifier.fillMaxWidth().height(200.dp), contentAlignment = Alignment.Center) {
                     Text(stringResource(R.string.history_sheet_empty), color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             } else {

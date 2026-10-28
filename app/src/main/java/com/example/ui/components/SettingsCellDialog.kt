@@ -30,7 +30,7 @@ fun SettingsCellDialog(currentCell: String, onSaveCell: (String) -> Unit, onDism
         },
         text = {
             Column {
-                Text(stringResource(R.string.dialog_settings_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 14.sp, style = MaterialTheme.typography.bodyMedium)
+                Text(stringResource(R.string.dialog_settings_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp, style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.height(16.dp))
                 OutlinedTextField(
                     value = cellText,
