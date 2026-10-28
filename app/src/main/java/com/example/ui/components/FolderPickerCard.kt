@@ -140,7 +140,7 @@ fun FolderPickerCard(
                         border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
                     ) {
                         Row(
-                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp),
+                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 14.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Icon(Icons.Outlined.FolderOpen, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(22.dp))
@@ -167,12 +167,12 @@ fun FolderPickerCard(
                                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                                     fontWeight = FontWeight.Bold,
                                     color = MaterialTheme.colorScheme.onPrimary,
-                                    style = MaterialTheme.typography.labelLarge,
+                                    fontSize = 12.sp, style = MaterialTheme.typography.labelLarge,
                                 )
                             }
                         }
                     }
-                    Spacer(Modifier.height(10.dp))
+                    Spacer(Modifier.height(12.dp))
                     Button(
                         onClick = onCombineClick,
                         enabled = !isProcessing && sampleCount > 0,

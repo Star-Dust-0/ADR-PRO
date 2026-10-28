@@ -51,7 +51,7 @@ fun UsbSyncSheet(
                     Text(stringResource(R.string.sync_sheet_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
                 }
             }
-            Spacer(Modifier.height(40.dp))
+            Spacer(Modifier.height(34.dp))
             if (rootUriString.isNullOrEmpty()) {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
@@ -61,11 +61,11 @@ fun UsbSyncSheet(
                 ) {
                     Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(Icons.Filled.Usb, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(40.dp))
-                        Spacer(Modifier.height(8.dp))
+                        Spacer(Modifier.height(4.dp))
                         Text(stringResource(R.string.sync_no_root_title), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                         Spacer(Modifier.height(4.dp))
                         Text(stringResource(R.string.sync_no_root_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
-                        Spacer(Modifier.height(16.dp))
+                        Spacer(Modifier.height(12.dp))
                         Button(onClick = { launcher.launch(null) }, modifier = Modifier.fillMaxWidth().height(44.dp), shape = RoundedCornerShape(16.dp)) {
                             Icon(Icons.Filled.FolderSpecial, null, modifier = Modifier.size(20.dp))
                             Spacer(Modifier.width(8.dp))
