@@ -39,7 +39,8 @@ fun UsbSyncSheet(
         if (uri != null) onSelectRootUri(uri)
     }
     ModalBottomSheet(onDismissRequest = onDismiss, modifier = modifier, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
-        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.92f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.85f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
+            Spacer(Modifier.height(28.dp))
             Row(modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                 Surface(modifier = Modifier.size(48.dp), shape = RoundedCornerShape(24.dp), color = MaterialTheme.colorScheme.primaryContainer) {
                     Box(contentAlignment = Alignment.Center) { Icon(Icons.Filled.Sync, null, tint = MaterialTheme.colorScheme.primary) }
@@ -58,7 +59,7 @@ fun UsbSyncSheet(
                     color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f),
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)),
                 ) {
-                    Column(modifier = Modifier.padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(Icons.Filled.Usb, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(40.dp))
                         Spacer(Modifier.height(8.dp))
                         Text(stringResource(R.string.sync_no_root_title), fontWeight = FontWeight.Bold, fontSize = 14.sp)

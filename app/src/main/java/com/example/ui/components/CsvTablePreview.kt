@@ -70,7 +70,7 @@ fun CsvTablePreview(
                     Text(stringResource(R.string.table_header_index), Modifier.width(32.dp), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium)
                     Text(stringResource(R.string.table_header_filename), Modifier.weight(1f), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium)
                     Text(stringResource(R.string.table_header_extracted_value), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
-                    Text(stringResource(R.string.table_view_details), Modifier.width(60.dp), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(stringResource(R.string.table_view_details), Modifier.width(76.dp).padding(start = 6.dp), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
             }
             Spacer(Modifier.height(8.dp))
@@ -101,6 +101,7 @@ private fun SampleRowItem(index: Int, item: CsvSampleItem, onClick: () -> Unit) 
         Surface(shape = RoundedCornerShape(10.dp), color = if (ok) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.errorContainer) {
             Text(
                 if (ok) item.extractedValue else "-",
+                fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace,
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
                 fontWeight = FontWeight.Bold,
                 color = if (ok) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.error,
@@ -108,7 +109,7 @@ private fun SampleRowItem(index: Int, item: CsvSampleItem, onClick: () -> Unit) 
             )
         }
         IconButton(onClick = onClick, modifier = Modifier.size(36.dp)) {
-            Icon(Icons.Filled.Visibility, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
+            Icon(Icons.Filled.Visibility, null, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(20.dp))
         }
     }
 }
