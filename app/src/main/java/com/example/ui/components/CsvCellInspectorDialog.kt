@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.data.model.CsvSampleItem
 
@@ -28,7 +29,7 @@ fun CsvCellInspectorDialog(item: CsvSampleItem, onDismiss: () -> Unit) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Filled.GridOn, null, tint = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.width(10.dp))
-                Text(stringResource(R.string.inspector_dialog_title, item.targetCell), fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.inspector_dialog_title, item.targetCell), fontWeight = FontWeight.Bold, fontSize = 18.sp)
             }
         },
         text = {
@@ -77,6 +78,7 @@ fun CsvCellInspectorDialog(item: CsvSampleItem, onDismiss: () -> Unit) {
         },
         confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.btn_close), fontWeight = FontWeight.Bold) } },
         shape = RoundedCornerShape(28.dp),
+        containerColor = MaterialTheme.colorScheme.surface,
     )
 }
 

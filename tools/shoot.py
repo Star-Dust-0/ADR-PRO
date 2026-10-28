@@ -46,5 +46,5 @@ for n in ['T1.csv','T2.csv','T3.csv']:
     p=find(dump('_tmp'),n)
     if p: sh('adb','shell','input','swipe',str(p[0]),str(p[1]),str(p[0]),str(p[1]),'900'); time.sleep(1)
 shot('13-picker-selected')
-tap_text('Open','14-after-open',wait=4)
+tap_text('Select','14-after-open',wait=4)
 shot('15-loaded')

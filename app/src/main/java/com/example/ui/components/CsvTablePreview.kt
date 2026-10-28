@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.data.model.CsvSampleItem
 import com.example.data.model.ExtractionStatus
@@ -34,7 +35,7 @@ fun CsvTablePreview(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
     ) {
         Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
@@ -46,7 +47,7 @@ fun CsvTablePreview(
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
                     Icon(Icons.Filled.TableChart, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(22.dp))
                     Spacer(Modifier.width(10.dp))
-                    Text(stringResource(R.string.table_preview_title), fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.titleMedium)
+                    Text(stringResource(R.string.table_preview_title), fontWeight = FontWeight.Bold, fontSize = 14.sp, color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.titleMedium)
                 }
                 Surface(shape = RoundedCornerShape(20.dp), color = MaterialTheme.colorScheme.primaryContainer) {
                     Text(
@@ -54,7 +55,7 @@ fun CsvTablePreview(
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,
-                        style = MaterialTheme.typography.labelLarge,
+                        fontSize = 12.sp, style = MaterialTheme.typography.labelLarge,
                     )
                 }
             }
@@ -64,12 +65,12 @@ fun CsvTablePreview(
                 shape = RoundedCornerShape(14.dp),
                 color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f),
             ) {
-                Row(modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     val c = MaterialTheme.colorScheme.onPrimaryContainer
-                    Text(stringResource(R.string.table_header_index), Modifier.width(32.dp), fontWeight = FontWeight.Bold, color = c, style = MaterialTheme.typography.bodyMedium)
-                    Text(stringResource(R.string.table_header_filename), Modifier.weight(1f), fontWeight = FontWeight.Bold, color = c, style = MaterialTheme.typography.bodyMedium)
-                    Text(stringResource(R.string.table_header_extracted_value), fontWeight = FontWeight.Bold, color = c, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
-                    Text(stringResource(R.string.table_view_details), Modifier.width(60.dp), fontWeight = FontWeight.Bold, color = c, style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(stringResource(R.string.table_header_index), Modifier.width(32.dp), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium)
+                    Text(stringResource(R.string.table_header_filename), Modifier.weight(1f), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium)
+                    Text(stringResource(R.string.table_header_extracted_value), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
+                    Text(stringResource(R.string.table_view_details), Modifier.width(60.dp), fontWeight = FontWeight.Bold, color = c, fontSize = 12.sp, style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
             }
             Spacer(Modifier.height(8.dp))

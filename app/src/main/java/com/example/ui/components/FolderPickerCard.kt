@@ -39,7 +39,7 @@ fun FolderPickerCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
     ) {
         Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
@@ -103,9 +103,9 @@ fun FolderPickerCard(
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
                     contentPadding = PaddingValues(horizontal = 8.dp),
                 ) {
-                    Icon(Icons.Outlined.FolderOpen, null, modifier = Modifier.size(18.dp))
+                    Icon(Icons.Outlined.FolderOpen, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("Select", fontWeight = FontWeight.Medium, maxLines = 1)
+                    Text("Select", fontWeight = FontWeight.Medium, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurface, maxLines = 1)
                 }
                 OutlinedButton(
                     onClick = onPickFilesClick,
@@ -114,9 +114,9 @@ fun FolderPickerCard(
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
                     contentPadding = PaddingValues(horizontal = 8.dp),
                 ) {
-                    Icon(Icons.Filled.Description, null, modifier = Modifier.size(18.dp))
+                    Icon(Icons.Filled.Description, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("CSV", fontWeight = FontWeight.Medium, maxLines = 1)
+                    Text("CSV", fontWeight = FontWeight.Medium, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurface, maxLines = 1)
                 }
                 Button(
                     onClick = onUnmountClick,
@@ -125,9 +125,9 @@ fun FolderPickerCard(
                     contentPadding = PaddingValues(horizontal = 8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDC2626), contentColor = Color.White),
                 ) {
-                    Icon(Icons.Filled.Eject, null, modifier = Modifier.size(18.dp))
+                    Icon(Icons.Filled.Eject, null, modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text(stringResource(R.string.btn_unmount), fontWeight = FontWeight.Bold, maxLines = 1)
+                    Text(stringResource(R.string.btn_unmount), fontWeight = FontWeight.Bold, fontSize = 13.sp, maxLines = 1)
                 }
             }
             AnimatedVisibility(visible = folderName.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {

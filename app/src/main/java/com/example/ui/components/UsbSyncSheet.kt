@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.data.model.TestSubFolder
 
@@ -37,19 +38,19 @@ fun UsbSyncSheet(
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
         if (uri != null) onSelectRootUri(uri)
     }
-    ModalBottomSheet(onDismissRequest = onDismiss, modifier = modifier) {
-        Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
+    ModalBottomSheet(onDismissRequest = onDismiss, modifier = modifier, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.92f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
             Row(modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                 Surface(modifier = Modifier.size(48.dp), shape = RoundedCornerShape(24.dp), color = MaterialTheme.colorScheme.primaryContainer) {
                     Box(contentAlignment = Alignment.Center) { Icon(Icons.Filled.Sync, null, tint = MaterialTheme.colorScheme.primary) }
                 }
                 Spacer(Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(stringResource(R.string.sync_sheet_title), fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
-                    Text(stringResource(R.string.sync_sheet_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall)
+                    Text(stringResource(R.string.sync_sheet_title), fontWeight = FontWeight.Bold, fontSize = 17.sp)
+                    Text(stringResource(R.string.sync_sheet_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
                 }
             }
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(40.dp))
             if (rootUriString.isNullOrEmpty()) {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
@@ -60,11 +61,11 @@ fun UsbSyncSheet(
                     Column(modifier = Modifier.padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(Icons.Filled.Usb, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(40.dp))
                         Spacer(Modifier.height(8.dp))
-                        Text(stringResource(R.string.sync_no_root_title), fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleSmall)
+                        Text(stringResource(R.string.sync_no_root_title), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                         Spacer(Modifier.height(4.dp))
-                        Text(stringResource(R.string.sync_no_root_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.sync_no_root_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
                         Spacer(Modifier.height(16.dp))
-                        Button(onClick = { launcher.launch(null) }, modifier = Modifier.fillMaxWidth().height(48.dp), shape = RoundedCornerShape(16.dp)) {
+                        Button(onClick = { launcher.launch(null) }, modifier = Modifier.fillMaxWidth().height(44.dp), shape = RoundedCornerShape(16.dp)) {
                             Icon(Icons.Filled.FolderSpecial, null, modifier = Modifier.size(20.dp))
                             Spacer(Modifier.width(8.dp))
                             Text(stringResource(R.string.btn_select_test_root), fontWeight = FontWeight.Bold)

@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.R
 import java.util.Locale
 
@@ -24,12 +25,12 @@ fun SettingsCellDialog(currentCell: String, onSaveCell: (String) -> Unit, onDism
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Filled.GridOn, null, tint = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.width(10.dp))
-                Text(stringResource(R.string.dialog_settings_title), fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.dialog_settings_title), fontWeight = FontWeight.Bold, fontSize = 18.sp)
             }
         },
         text = {
             Column {
-                Text(stringResource(R.string.dialog_settings_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
+                Text(stringResource(R.string.dialog_settings_desc), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 14.sp, style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.height(16.dp))
                 OutlinedTextField(
                     value = cellText,
@@ -48,5 +49,6 @@ fun SettingsCellDialog(currentCell: String, onSaveCell: (String) -> Unit, onDism
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.btn_cancel), fontWeight = FontWeight.Bold) } },
         shape = RoundedCornerShape(28.dp),
+        containerColor = MaterialTheme.colorScheme.surface,
     )
 }
