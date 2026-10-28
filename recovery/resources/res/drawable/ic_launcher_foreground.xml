@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="center"
+        android:height="72dp"
+        android:width="72dp"
+        android:drawable="@drawable/ic_ele_logo"/>
+</layer-list>
