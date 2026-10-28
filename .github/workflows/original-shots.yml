@@ -12,10 +12,13 @@ jobs:
           arch: x86_64
           profile: pixel_6
           script: |
+            adb push tools/testcsv/. /sdcard/Download/
+            adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Download/T1.csv
             adb install -r recovery/original/ADR_PRO_base.apk
             adb shell am start -n com.ELE.ADR.Merger/com.example.MainActivity
             sleep 7
             python3 tools/shoot.py shots-en x
+            true
             adb shell cmd locale set-app-locales com.ELE.ADR.Merger --locales ar
             adb shell am force-stop com.ELE.ADR.Merger
             adb shell am start -n com.ELE.ADR.Merger/com.example.MainActivity

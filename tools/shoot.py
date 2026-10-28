@@ -30,15 +30,27 @@ def tap_text(text, name=None, wait=2):
     return True
 import os, time
 OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True)
-step = sys.argv[2]
+def back(): sh('adb','shell','input','keyevent','4'); time.sleep(1.5)
 time.sleep(1)
 shot('01-home')
-tap_text('Cell Settings', '02-settings-dialog'); sh('adb','shell','input','keyevent','4'); time.sleep(1)
-tap_text('Merge History', '03-history-empty'); sh('adb','shell','input','keyevent','4'); time.sleep(1)
-tap_text('Sync Data', '04-sync-no-root'); sh('adb','shell','input','keyevent','4'); time.sleep(1)
-tap_text('Sample Test', '05-demo-result', wait=4)
-sh('adb','shell','input','swipe','540','1800','540','600','300'); time.sleep(1); shot('06-scrolled')
-sh('adb','shell','input','swipe','540','1800','540','600','300'); time.sleep(1); shot('07-scrolled2')
-sh('adb','shell','input','swipe','540','1800','540','600','300'); time.sleep(1); shot('08-scrolled3')
-tap_text('Merge History', '09-history-filled'); sh('adb','shell','input','keyevent','4'); time.sleep(1)
-tap_text('28.45', '10-inspector')
+tap_text('Settings','02-settings-dialog'); back()
+tap_text('History','03-history-empty'); back()
+tap_text('Sync Data','04-sync-no-root'); back()
+# CSV picker flow
+tap_text('CSV','10-picker-open',wait=3)
+if not tap_text('Downloads','11-picker-downloads',wait=2):
+    tap_text('Show roots','11a-roots',wait=2); tap_text('Downloads','11-picker-downloads',wait=2)
+shot('12-picker-list')
+for n in ['T1.csv','T2.csv','T3.csv']:
+    p=find(dump('_tmp'),n)
+    if p: sh('adb','shell','input','swipe',str(p[0]),str(p[1]),str(p[0]),str(p[1]),'900'); time.sleep(1)
+shot('13-picker-selected')
+tap_text('Open','14-after-open',wait=4)
+shot('15-result')
+sh('adb','shell','input','swipe','540','1800','540','900','300'); time.sleep(1); shot('16-scrolled')
+sh('adb','shell','input','swipe','540','1800','540','900','300'); time.sleep(1); shot('17-scrolled2')
+sh('adb','shell','input','swipe','540','900','540','2000','300'); time.sleep(1)
+sh('adb','shell','input','swipe','540','900','540','2000','300'); time.sleep(1)
+tap_text('History','18-history-filled'); back()
+tap_text('Settings','19-settings'); back()
+tap_text('Inspect','20-inspector',wait=2)
