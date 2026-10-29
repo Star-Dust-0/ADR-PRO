@@ -33,7 +33,7 @@ fun BatchHistorySheet(
     onDismiss: () -> Unit,
 ) {
     ModalBottomSheet(onDismissRequest = onDismiss) {
-        Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 24.dp)) {
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.55f).padding(horizontal = 24.dp).padding(bottom = 24.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth().padding(top = 24.dp, bottom = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,

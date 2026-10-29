@@ -39,7 +39,7 @@ fun UsbSyncSheet(
         if (uri != null) onSelectRootUri(uri)
     }
     ModalBottomSheet(onDismissRequest = onDismiss, modifier = modifier, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
-        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.75f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.69f).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
             Spacer(Modifier.height(28.dp))
             Row(modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                 Surface(modifier = Modifier.size(48.dp), shape = RoundedCornerShape(24.dp), color = MaterialTheme.colorScheme.primaryContainer) {
