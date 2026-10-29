@@ -33,7 +33,7 @@ fun BatchHistorySheet(
     onDismiss: () -> Unit,
 ) {
     ModalBottomSheet(onDismissRequest = onDismiss) {
-        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.66f).padding(horizontal = 24.dp).padding(bottom = 24.dp)) {
+        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.55f).padding(horizontal = 24.dp).padding(bottom = 24.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth().padding(top = 24.dp, bottom = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -82,8 +82,8 @@ private fun HistoryCardItem(item: BatchHistoryEntity, onSelect: () -> Unit, onDe
                     color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp, lineHeight = 14.sp,
                 )
             }
-            IconButton(onClick = onSelect) { Icon(Icons.Filled.History, null, tint = MaterialTheme.colorScheme.primary) }
-            IconButton(onClick = onDelete) {
+            IconButton(onClick = onSelect, modifier = Modifier.size(36.dp)) { Icon(Icons.Filled.History, null, tint = MaterialTheme.colorScheme.primary) }
+            IconButton(onClick = onDelete, modifier = Modifier.size(36.dp)) {
                 Icon(Icons.Filled.Delete, stringResource(R.string.btn_delete), tint = MaterialTheme.colorScheme.error.copy(alpha = 0.8f))
             }
         }
